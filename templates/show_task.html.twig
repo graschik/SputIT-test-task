@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block form %}
+    <div class="container">
+        <div class="row">
+            <a href="{{ path('create_task') }}" class="btn btn-primary">Create task</a>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>TODO</th>
+                    <th>DOING</th>
+                    <th>DONE</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        {% for task in taskTODO %}
+                            <div>
+                                <a href="{{ path('task_update',{'id':task.getId}) }}">{{ task.getName }}</a>
+                            </div>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for task in taskDOING %}
+                            <div>
+                                <a href="{{ path('task_update',{'id':task.getId}) }}">{{ task.getName }}</a>
+                            </div>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for task in taskDONE %}
+                            <div>
+                                <a href="{{ path('task_update',{'id':task.getId}) }}">{{ task.getName }}</a>
+                            </div>
+                        {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
